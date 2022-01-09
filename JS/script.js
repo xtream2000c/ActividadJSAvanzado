@@ -8,7 +8,6 @@ function main() {
     var turnos = 0;
     document.getElementById("turno").innerHTML= "Turno de: Jugador 1";
 
-
     for (var i = 0; i < filas; i++) {
 
         var fila = tabla.insertRow();
@@ -19,8 +18,6 @@ function main() {
             celda.innerHTML="<img src='Resources/blanco.gif'>";
             celda.className="vacio";
             celda.addEventListener('click', compruebaOcupada);
-            
-            
             
         }
     }
@@ -40,17 +37,18 @@ function main() {
         
         if(turnos%2==0){
             
-            document.getElementById("turno").innerHTML= "Turno de: Jugador 1";
+            document.getElementById("turno").innerHTML= "Turno de: Jugador 2";
             celdaSeleccionada.innerHTML="<img src='Resources/equis.jpg'>";
             celdaSeleccionada.className="Jugador1";
 
         }else{
-            document.getElementById("turno").innerHTML= "Turno de: Jugador 2";
+            document.getElementById("turno").innerHTML= "Turno de: Jugador 1";
             celdaSeleccionada.innerHTML="<img src='Resources/circulo.jpg'>";
             celdaSeleccionada.className="Jugador2";
             
         }
         turnos+=1;
+        
     }
 
 }
