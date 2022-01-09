@@ -1,19 +1,56 @@
 window.onload = main;
 function main() {
 
-    var t = document.getElementById("tabla"),
-        f = t.getElementsByTagName("tr");
-        
+    var tabla = document.getElementById("tabla");
+    var filas = 3;
+    var columnas = 3;
+    
+    var turnos = 0;
+    document.getElementById("turno").innerHTML= "Turno de: Jugador 1";
 
-    for (var i = 0; i < f.length; i++) {
 
-        var c = f[i].getElementsByTagName("td");
+    for (var i = 0; i < filas; i++) {
 
-        for (var j = 0; j < c.length; j++) {
+        var fila = tabla.insertRow();
+        for (var j = 0; j < columnas; j++) {
             
-            c[j].innerHTML="<img src='Resources/blanco.gif'>";
-
+            var celda = fila.insertCell();
+            celda.id=i+''+j;
+            celda.innerHTML="<img src='Resources/blanco.gif'>";
+            celda.className="vacio";
+            celda.addEventListener('click', compruebaOcupada);
+            
+            
+            
         }
-        
     }
+
+    function compruebaOcupada(){
+        ocupada = this.className;
+        if(ocupada !="vacio"){
+            alert("Esa celda ya esta ocupada");
+        }else{
+            turno(this.id);
+        }
+    }
+
+    function turno(id){
+        
+        var celdaSeleccionada = document.getElementById(id);
+        
+        if(turnos%2==0){
+            
+            document.getElementById("turno").innerHTML= "Turno de: Jugador 1";
+            celdaSeleccionada.innerHTML="<img src='Resources/equis.jpg'>";
+            celdaSeleccionada.className="Jugador1";
+
+        }else{
+            document.getElementById("turno").innerHTML= "Turno de: Jugador 2";
+            celdaSeleccionada.innerHTML="<img src='Resources/circulo.jpg'>";
+            celdaSeleccionada.className="Jugador2";
+            
+        }
+        turnos+=1;
+    }
+
 }

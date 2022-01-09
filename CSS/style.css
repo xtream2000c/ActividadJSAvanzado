@@ -1,5 +1,16 @@
-td{
+table, td{
 
     border: 1px solid black;
+
+}
+
+img{
+    height: 200px;
+    width: 200px;
+}
+
+#tabla{
+
+    margin: 0 auto;
 
 }
