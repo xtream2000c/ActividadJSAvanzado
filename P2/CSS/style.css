@@ -8,17 +8,34 @@ body{
     margin: 0px;
     min-height: 100%;
     min-width: 100%;
+    background-color: gainsboro;
 }
 
 .imagenMostrada{
     position: absolute;
     width: 100%;
-    min-height: 80%;
+    height: 80%;
 }
 
 .selector{
+    display: flex;
     position: absolute;
     width: 100%;
-    min-height: 20%;
+    height: 20%;
     bottom: 0px;
+}
+
+.thumbnailSelector{
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0px;
+    height: 90%;
+    
+}
+
+.thumbnail{
+    
+    height: 90%;
+    width: auto;
+    
 }
