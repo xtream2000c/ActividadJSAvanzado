@@ -1,16 +1,9 @@
-window.onload = main();
 
-function main() {
+
+
+
+function cambiaImagen(imagen) {
+
+    document.getElementById("imagen").src=imagen.src;
     
-    alert(document.getElementById("imagen1").getAttribute("src"));
-    document.getElementById("imagen1").addEventListener("click", cambiaImagen);
-    document.getElementById("imagen2").addEventListener("click", cambiaImagen);
-    document.getElementById("imagen3").addEventListener("click", cambiaImagen);
-    document.getElementById("imagen4").addEventListener("click", cambiaImagen);
-
-}
-
-function cambiaImagen() {
-    alert(this.getAttribute("src"));
-    document.getElementsByClassName("imagen").getAttribute('src')=this.getAttribute('src');
 }
