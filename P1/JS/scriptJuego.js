@@ -1,13 +1,24 @@
 window.onload = main;
+
 var turnos = 0;
 var gana = false
 var jugador;
+var jugador1;
+var jugador2;
+var modo;
+
 function main() {
 
+    var infoPartida = JSON.parse(sessionStorage.getItem("informacionPartida"));
+    
+    jugador1 = infoPartida[0];
+    jugador2 = infoPartida[1];
+    modo = infoPartida[2];
+    
     var tabla = document.getElementById("tabla");
     var filas = 3;
     var columnas = 3;
-    document.getElementById("turno").innerHTML= "Turno de: Jugador 1";
+    document.getElementById("turno").innerHTML= "Turno de: "+jugador1 ;
 
     for (var i = 0; i < filas; i++) {
 
@@ -38,7 +49,7 @@ function compruebaOcupada(){
         if(gana==false){
             alert("Ya se acabo el juego, ha habido un empate");
         }else{
-            alert("Ya se acabo el juego, ha ganado el jugador: "+ jugador);
+            alert("Ya se acabo el juego, ha ganado: "+ jugador);
         }
     }
 }
@@ -49,14 +60,25 @@ function turno(id){
     
     if(turnos%2==0){
         
-        document.getElementById("turno").innerHTML= "Turno de: Jugador 2";
-        celdaSeleccionada.innerHTML="<img src='Resources/equis.jpg'>";
-        celdaSeleccionada.className="Jugador1";
+        document.getElementById("turno").innerHTML= "Turno de: " + jugador2;
+
+        if (modo=="clasico") {
+            celdaSeleccionada.innerHTML="<img src='Resources/equis.jpg'>";
+        }else if(modo=="informatica"){
+            celdaSeleccionada.innerHTML="<img src='Resources/mouse.png'>";
+        }
+        
+
+        celdaSeleccionada.className=jugador1;
 
     }else{
-        document.getElementById("turno").innerHTML= "Turno de: Jugador 1";
-        celdaSeleccionada.innerHTML="<img src='Resources/circulo.jpg'>";
-        celdaSeleccionada.className="Jugador2";
+        document.getElementById("turno").innerHTML= "Turno de: " +jugador1;
+        if (modo=="clasico") {
+            celdaSeleccionada.innerHTML="<img src='Resources/circulo.jpg'>";
+        }else if(modo=="informatica"){
+            celdaSeleccionada.innerHTML="<img src='Resources/keyboard.png'>";
+        }
+        celdaSeleccionada.className=jugador2;
         
     }
 
@@ -130,14 +152,14 @@ function quienGana(){
 
     if(turnos%2==0){
         
-        jugador="Jugador1";
+        jugador=jugador1;
 
     }else{
         
-        jugador="Jugador2";
+        jugador=jugador2;
         
     }
-    document.getElementById("turno").innerHTML="Ha ganado el jugador: "+ jugador;
-    alert("Ha ganado el jugador: "+ jugador);
+    document.getElementById("turno").innerHTML="Ha ganado: "+ jugador;
+    alert("Ha ganado: "+ jugador);
 
 }

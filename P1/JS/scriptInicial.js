@@ -20,4 +20,6 @@ function comenzarJuego(event) {
     ]
 
     sessionStorage.setItem("informacionPartida", JSON.stringify(infoPartida));
+
+    location.href = 'juego.html';
 }
