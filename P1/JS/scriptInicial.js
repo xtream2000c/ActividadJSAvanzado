@@ -13,9 +13,6 @@ function comenzarJuego(event) {
     var jugador2 = document.getElementById("jugador2").value;
     var modo = document.getElementById("modo").value;
 
-
-    alert(jugador1 + jugador2 + modo);
-
     var infoPartida = [
         jugador1,
         jugador2,
