@@ -1,6 +1,7 @@
 window.onload = main;
 var turnos = 0;
 var gana = false
+var jugador;
 function main() {
 
     var tabla = document.getElementById("tabla");
@@ -25,7 +26,7 @@ function main() {
 }
 
 function compruebaOcupada(){
-    if(gana==false){
+    if(gana==false && turnos<9){
         ocupada = this.className;
         if(ocupada !="vacio"){
             alert("Esa celda ya esta ocupada");
@@ -34,7 +35,11 @@ function compruebaOcupada(){
             
         }
     }else{
-        alert("Ya se acabo el juego");
+        if(gana==false){
+            alert("Ya se acabo el juego, ha habido un empate");
+        }else{
+            alert("Ya se acabo el juego, ha ganado el jugador: "+ jugador);
+        }
     }
 }
 
@@ -56,7 +61,7 @@ function turno(id){
     }
 
     compruebaGana();
-    turnos+=1;
+    
     
 }
 
@@ -106,6 +111,8 @@ function compruebaGana(){
 
         ganado();
 
+    }else{
+        turnos+=1;
     }
 
         
@@ -114,7 +121,12 @@ function compruebaGana(){
 
 function ganado() {
 
-    var jugador
+    gana = true;
+    quienGana();
+
+}
+
+function quienGana(){
 
     if(turnos%2==0){
         
@@ -125,7 +137,7 @@ function ganado() {
         jugador="Jugador2";
         
     }
+    document.getElementById("turno").innerHTML="Ha ganado el jugador: "+ jugador;
+    alert("Ha ganado el jugador: "+ jugador);
 
-    document.getElementById("turno").innerHTML= "Ha ganado: " + jugador;
-    gana = true;
 }

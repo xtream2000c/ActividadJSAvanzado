@@ -6,14 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="CSS/style.css">
-    <script src="JS/script.js"></script>
+    <script src=""></script>
 </head>
 <body>
-    <div id="tablero">
-        <table id="tabla">
-        </table>
+    <div id="pantallaCompleta">
 
-        <h3 id="turno">Turno de: </h3>
+        <div id="centrado">
+
+            <form action="juego.html" method="get">
+
+                <label for="jugador1">Jugador 1</label>
+                <input type="text" name="jugador1" id="jugador1" required placeholder="Jugador 1" value="Jugador 1"> 
+                <br>
+                <br>
+                <label for="jugador2">Jugador 2</label>
+                <input type="text" name="jugador2" id="jugador2" required placeholder="Jugador 2" value="Jugador 2">
+                <br>
+                <br>
+                <select name="modo" id="modo">
+                    <option value="clasico">Clasico</option>
+                    <option value="informatica">Informatica</option>
+                </select>
+                <input type="submit">
+
+            </form>
+
+        </div>
+
     </div>
 </body>
 </html>
