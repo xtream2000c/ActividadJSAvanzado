@@ -6,15 +6,34 @@ var jugador;
 var jugador1;
 var jugador2;
 var modo;
+var victoriasJ1;
+var victoriasJ2;
+var bRevancha;
+var btnRevancha;
+var marcador;
 
 function main() {
+
+    btnRevancha = document.getElementById("revancha");
+    btnRevancha.addEventListener("click", revancha);
+    marcador = document.getElementById("marcador");
 
     var infoPartida = JSON.parse(sessionStorage.getItem("informacionPartida"));
     
     jugador1 = infoPartida[0];
     jugador2 = infoPartida[1];
     modo = infoPartida[2];
+    victoriasJ1 = infoPartida[3];
+    victoriasJ2 = infoPartida[4];
+    bRevancha = infoPartida[5];
     
+    if(bRevancha>0){
+
+        marcador.innerHTML= jugador1 + " (" + victoriasJ1 + " - " + victoriasJ2 + ") " + jugador2;
+        marcador.style.display="inline-block";
+
+    }
+
     var tabla = document.getElementById("tabla");
     var filas = 3;
     var columnas = 3;
@@ -68,7 +87,6 @@ function turno(id){
             celdaSeleccionada.innerHTML="<img src='Resources/mouse.png'>";
         }
         
-
         celdaSeleccionada.className=jugador1;
 
     }else{
@@ -135,9 +153,14 @@ function compruebaGana(){
 
     }else{
         turnos+=1;
-    }
 
-        
+        if (turnos>=9) {
+
+            document.getElementById("turno").innerHTML="Ha habido un empate";
+
+            btnRevancha.style.display="inline-block";
+        }
+    }
     
 }
 
@@ -159,7 +182,39 @@ function quienGana(){
         jugador=jugador2;
         
     }
+
     document.getElementById("turno").innerHTML="Ha ganado: "+ jugador;
-    alert("Ha ganado: "+ jugador);
+
+    btnRevancha.style.display="inline-block";
+
+}
+
+function revancha() {
+
+    btnRevancha.style.display="none";
+    bRevancha++;
+    gana = false;
+    turnos = 0;
+
+    if(jugador==jugador1){
+        victoriasJ1++;
+    }else if(jugador==jugador2){
+        victoriasJ2++;
+    }
+
+    var infoPartidaR = [
+        jugador1,
+        jugador2,
+        modo,
+        victoriasJ1,
+        victoriasJ2,
+        bRevancha
+    ]
+
+    jugador="";
+
+    document.getElementById("tabla").innerHTML="";
+    sessionStorage.setItem("informacionPartida", JSON.stringify(infoPartidaR));
+    main();
 
 }

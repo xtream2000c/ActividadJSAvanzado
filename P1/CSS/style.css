@@ -4,15 +4,26 @@ table, td{
 
 }
 
+td{
+    margin: 0px;
+    padding: 0px;
+    width: 200px;
+    height: 200px;
+}
+
 img{
+    margin: 0px;
+    padding: 0px;
     height: 200px;
     width: 200px;
 }
 
-#tabla{
+#abajo{
+    text-align: center;
+}
 
-    margin: 0 auto;
-
+#arriba{
+    text-align: center;
 }
 
 html, body{
